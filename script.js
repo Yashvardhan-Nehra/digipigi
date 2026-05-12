@@ -160,12 +160,30 @@
       formStatus.textContent = '';
       formStatus.style.color = '';
 
-      /* Replace with your actual form endpoint (e.g. Formspree, EmailJS, etc.) */
-      await new Promise(r => setTimeout(r, 1200));
+      const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxI0OU_K_4vqt-oyOXbd_plWttV-u8UBB0ftnmGgwqxxRtyXqYmNVvfFIGDrGHSAFPe/exec';
 
-      formStatus.textContent = "Message sent! We'll be in touch within 24 hours.";
-      formStatus.style.color = 'var(--clr-accent)';
-      form.reset();
+      try {
+        await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            company: form.company.value.trim(),
+            service: form.service.value,
+            message
+          })
+        });
+
+        formStatus.textContent = "Message sent! We'll be in touch within 24 hours.";
+        formStatus.style.color = 'var(--clr-accent)';
+        form.reset();
+      } catch {
+        formStatus.textContent = 'Something went wrong. Please email us directly.';
+        formStatus.style.color = '#ff6b6b';
+      }
+
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Send Message <span aria-hidden="true">→</span>';
     });
