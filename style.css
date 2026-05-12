@@ -220,11 +220,7 @@ button { font-family: inherit; cursor: none; border: none; background: none; }
 .header__logo-img {
   height: 52px;
   width: auto;
-  border-radius: 10px;
   display: block;
-  background: #ffffff;
-  padding: 6px 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
 .header__nav { margin-left: auto; }
 .header__nav-list {
@@ -774,11 +770,7 @@ button { font-family: inherit; cursor: none; border: none; background: none; }
 .footer__logo-img {
   height: 46px;
   width: auto;
-  border-radius: 10px;
   display: block;
-  background: #ffffff;
-  padding: 6px 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
 .footer__tagline { font-size: 0.875rem; color: var(--clr-text-3); }
 .footer__nav { display: flex; gap: 4rem; }
